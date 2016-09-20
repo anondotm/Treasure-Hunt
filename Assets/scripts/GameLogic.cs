@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class GameLogic : MonoBehaviour {
 	bool didPlayerWin = false;
@@ -28,6 +29,9 @@ public class GameLogic : MonoBehaviour {
 		if (didPlayerWin) {
 			textObject.text = "You found your ship! Press '[SPACE]' again to return to your mission.";
 			controlPrompt.SetActive (false);
+			if (Input.GetKeyDown (KeyCode.Space)) {
+				SceneManager.LoadScene ("endScene");
+			}
 		} else if ((player.position - treasureActive.position).magnitude < 5f) {
 			controlPrompt.SetActive (true);
 			if (Input.GetKeyDown (KeyCode.Space)) {
