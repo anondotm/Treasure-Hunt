@@ -4,6 +4,8 @@ using System.Collections;
 
 public class GameLogic : MonoBehaviour {
 	bool didPlayerWin = false;
+	public GameObject locator;
+	public GameObject playerLocator;
 	public GameObject controlPrompt;
 	public Text textObject;
 	public string[] treasureString; //array of messages for "textObject"
@@ -33,6 +35,10 @@ public class GameLogic : MonoBehaviour {
 				} else { //otherwise, add another one on!
 					counter++;
 					treasureActive = treasureArray [counter];
+					if (counter == 1) {
+						locator.SetActive (false);
+						playerLocator.SetActive (true);
+					}
 				}
 			}
 		} else if ((player.position - treasureActive.position).magnitude > 5f) {
