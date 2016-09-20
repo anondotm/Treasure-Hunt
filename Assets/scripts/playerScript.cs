@@ -19,12 +19,12 @@ public class playerScript : MonoBehaviour {
 		if (Input.GetKey (KeyCode.W)) {
 			//transform.Rotate(0f,1, 0f);
 			player.transform.position += new Vector3 (0, 0, speed) * Time.deltaTime;
-			player.transform.eulerAngles = new Vector3 (0, 0, 0);
+			player.transform.eulerAngles = new Vector3 (0, -180, 0);
 		}
 		else if (Input.GetKey (KeyCode.S)) {
 			//transform.Rotate(0f,-1, 0f);
 			player.transform.position += new Vector3 (0, 0, -speed) * Time.deltaTime;
-			player.transform.eulerAngles = new Vector3 (0, -180, 0);
+			player.transform.eulerAngles = new Vector3 (0, 0, 0);
 
 		}
 		else if (Input.GetKey (KeyCode.A)) {
