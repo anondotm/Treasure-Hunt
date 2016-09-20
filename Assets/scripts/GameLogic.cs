@@ -4,7 +4,7 @@ using System.Collections;
 
 public class GameLogic : MonoBehaviour {
 	bool didPlayerWin = false;
-	public Text controlPrompt;
+	public GameObject controlPrompt;
 	public Text textObject;
 	public string[] treasureString; //array of messages for "textObject"
 	public Transform player;
@@ -22,22 +22,21 @@ public class GameLogic : MonoBehaviour {
 
 
 		if (didPlayerWin) {
-				textObject.text = "You found your ship! Press 'SPACE' to return to your mission.";
-		} 
-		else if ((player.position - treasureActive.position).magnitude < 5f) {
-			//controlPrompt.SetActive (true);
+			textObject.text = "You found your ship! Press 'SPACE' to return to your mission.";
+		} else if ((player.position - treasureActive.position).magnitude < 5f) {
+			controlPrompt.SetActive (true);
 			if (Input.GetKeyDown (KeyCode.Space)) {
 				
-				if (treasureArray.Length -1 <= counter) {//if you have reached the last treasure
-					Debug.Log("WOW");
+				if (treasureArray.Length - 1 <= counter) {//if you have reached the last treasure
+					Debug.Log ("WOW");
 					didPlayerWin = true;
-				} 
-
-				else { //otherwise, add another one on!
+				} else { //otherwise, add another one on!
 					counter++;
 					treasureActive = treasureArray [counter];
 				}
 			}
+		} else if ((player.position - treasureActive.position).magnitude > 5f) {
+			controlPrompt.SetActive (false);
 		}
 
 		if (didPlayerWin == false) {
