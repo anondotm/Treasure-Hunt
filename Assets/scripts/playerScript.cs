@@ -39,6 +39,6 @@ public class playerScript : MonoBehaviour {
 			player.transform.eulerAngles = new Vector3 (0, -90, 0);
 
 		}
-		Camera.main.transform.position = transform.position + new Vector3 (0, 2, -4);
+		Camera.main.transform.position = transform.position + new Vector3 (0, 2, -2);
 	}
 }
