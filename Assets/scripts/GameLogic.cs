@@ -22,19 +22,20 @@ public class GameLogic : MonoBehaviour {
 
 
 		if (didPlayerWin) {
-				textObject.text = "You can leave now!";
+				textObject.text = "You found your ship! Press 'SPACE' to return to your mission.";
 		} 
 		else if ((player.position - treasureActive.position).magnitude < 5f) {
 			//controlPrompt.SetActive (true);
 			if (Input.GetKeyDown (KeyCode.Space)) {
 				
-				if (counter >= treasureArray.Length) {//if you have reached the last treasure
-					//didPlayerWin = true;
-					Debug.Log("You can go back!");
+				if (treasureArray.Length -1 <= counter) {//if you have reached the last treasure
+					Debug.Log("WOW");
+					didPlayerWin = true;
 				} 
 
 				else { //otherwise, add another one on!
 					counter++;
+					treasureActive = treasureArray [counter];
 				}
 			}
 		}
